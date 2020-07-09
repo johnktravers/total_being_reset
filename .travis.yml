@@ -1,5 +1,4 @@
 before_script:
-- cp config/database.yml.travis config/database.yml
 - psql -c 'create database total_being_reset_test;' -U postgres
 language: ruby
 rvm:
