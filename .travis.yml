@@ -1,0 +1,17 @@
+before_script:
+- psql -c 'create database total_being_reset_test;' -U postgres
+language: ruby
+rvm:
+- 2.6.3
+script:
+- bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
+- bundle exec rspec
+services: postgresql
+deploy:
+  provider: heroku
+  api_key:
+    secure: WA/qjcAvzUEO40wVbTPEa8hF1mibs54OZDqeb9gq8BQTxZVjiGQ5LX6n24wGBv04dd/qNOwNk9eSuMvAgF9mmt7+0QwgxOeXuq2k8k1yP2NUdvm3WDopw/kazHV5MuRcpetYFCq9IZrYfIKrHkkKj6IaKXrgvGffolWkY564Qug7LZKoSy+3PZGTiVlGYZTELfyvz1LjS9tsWqvZCFNhSdTMFom82zfaBkcNZ4lVxSgAxDC+/RHCnn+O4L0XGhzFWvs9p75p0uR0W1ILpeh3z8X03s8InJQCTGyNgn6ysF9/VnYXeLfdzkP2HLw8FUCuQ9ZPkunv9vv9sd7mVKYfp6+nzknPtYvyNKchE3m3ho2e3GKMABvIIBiE/Yw3aiBe+iOW8rwzRYLZmlrbssFSMuGhCAg2eJr8/vf+23p72IyhLbGCZetEMzKb9uVO2wFKYoaUyPmq1Ob0iOWQWOJgoV5GnNARObAOrCk30oxwwnRSlB2cb0RoYxcJz6/VQUMTdHFbdWuSOJw/mC3h9kF7eAsLtUPbc6uRNK+B3eCvVLLUoS+x2mblf9x2sySdE+JP6nSJH+WlSJ5mIHxvUem0MUi359p2wY1XTTvO0Vuifu4zr4tjQ9wuSR4XCfeQ0wlefiwxfSwOISye2mdcJxOEl82dujgPGkwsMQgFSEOueMA=
+  app: total-being-reset
+  on:
+    repo: johnktravers/total_being_reset
+  skip_cleanup: 'true'
