@@ -11,13 +11,21 @@
  * It is generally better to create a new file per style scope.
  */
 
-$theme-colors: (
-  "primary": purple,
-  "info": tomato,
-  "danger": teal
-);
+h1 {
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+}
 
-@import "../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+.home {
+  background-image: url(sunset_silhouette.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
 
-@import "./styles.css";
+.about, .contact {
+  background-color: #31708e;
+  color: #f7f9fb;
+  height: 100vh;
+}
